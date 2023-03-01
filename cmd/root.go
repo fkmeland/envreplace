@@ -54,10 +54,9 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	// Define flags
-	rootCmd.Flags().StringSliceP("file", "f", []string{}, "file to replace environment variables in")
+	rootCmd.Flags().StringSliceP("file", "f", []string{}, "file(s) to replace environment variables in")
 	rootCmd.MarkFlagRequired("file")
-
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().StringSliceP("prefix", "p", []string{}, "prefix(es) to filter environment variables by")
 
 	// Bind flags to Viper
 	viper.BindPFlag("file", rootCmd.Flags().Lookup("file"))

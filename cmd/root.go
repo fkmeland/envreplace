@@ -67,9 +67,19 @@ func init() {
 
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
-	viper.AutomaticEnv() // read in environment variables that match
+	// Set some default values
+	viper.SetDefault("appName", "envreplace")
+	viper.SetDefault("appVersion", "v0.0.0")
+	viper.SetDefault("appBranch", "n/a")
+	viper.SetDefault("appCommit", "n/a")
+	viper.SetDefault("appBuild", "n/a")
+	viper.SetDefault("goVersion", "n/a")
+
+	// Read in environment variables that match for the application
+	viper.AutomaticEnv()
 }
 
+// verbose prints a message if the verbose flag is set
 func verbose(msg string) {
 	if viper.GetBool("verbose") {
 		log.Println(msg)

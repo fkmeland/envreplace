@@ -22,25 +22,23 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
+func printVersion(cmd *cobra.Command, args []string) {
+	appName := viper.Get("appName")
+	version := viper.Get("appVersion")
+
+	fmt.Printf("%s %s\n", appName, version)
+}
+
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Print the version information for this application",
-	Run: func(cmd *cobra.Command, args []string) {
-		appName := viper.Get("appName")
-		version := viper.Get("appVersion")
-		branch := viper.Get("appBranch")
-		commit := viper.Get("appCommit")
-		appBuild := viper.Get("appBuild")
-		goVersion := viper.Get("goVersion")
-
-		log.Printf("%s\n\tversion: %s\n\tbranch: %s\n\tcommit: %s\n\tbuild: %s\n\tgo-version: %s", appName, version, branch, commit, appBuild, goVersion)
-	},
+	Run:   printVersion,
 }
 
 func init() {

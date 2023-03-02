@@ -25,7 +25,7 @@ builds:
       - -X "main.goVersion={{ .Env.GOVERSION }}"
 dockers:
   - image_templates:
-      - "gcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-amd64"
     use: buildx
     goos: linux
     goarch: amd64
@@ -42,7 +42,7 @@ dockers:
       - --label=org.opencontainers.image.revision={{ .FullCommit }}
       - --label=org.opencontainers.image.licenses=MIT
   - image_templates:
-      - "gcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-arm64v8"
+      - "ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-arm64v8"
     use: buildx
     goos: linux
     goarch: arm64
@@ -59,7 +59,7 @@ dockers:
       - --label=org.opencontainers.image.revision={{ .FullCommit }}
       - --label=org.opencontainers.image.licenses=MIT
   - image_templates:
-      - "gcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-mips"
+      - "ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-mips"
     use: buildx
     goos: linux
     goarch: mips
@@ -72,7 +72,7 @@ dockers:
       - "--label=org.opencontainers.image.revision={{.FullCommit}}-mips"
       - "--label=org.opencontainers.image.version={{.Version}}-mips"
   - image_templates:
-      - "gcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-mips64"
+      - "ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Version }}-mips64"
     use: buildx
     goos: linux
     goarch: mips64

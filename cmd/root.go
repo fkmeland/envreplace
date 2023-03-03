@@ -152,7 +152,7 @@ func process(cmd *cobra.Command, args []string) {
 		// Iterate through environment variables and add them to the map
 		for _, envVar := range envVars {
 			pair := strings.Split(envVar, "=")
-			vars[pair[0]] = pair[1]
+			vars[pair[0]] = fmt.Sprintf("\"%s\"", strings.Join(pair[1:], "="))
 		}
 
 		// Create a set to keep track of the keys that have been written to the temporary file

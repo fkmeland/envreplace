@@ -1,6 +1,7 @@
 FROM alpine
-COPY envreplace /
+WORKDIR /app
+COPY envreplace /app/
 
 USER 1001
-ENTRYPOINT ["envreplace"]
+ENTRYPOINT ["/app/envreplace"]
 CMD ["-h"]

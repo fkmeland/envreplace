@@ -1,4 +1,6 @@
-FROM scratch
-WORKDIR /app
-COPY envreplace /app/
-ENTRYPOINT ["/app/envreplace"]
+FROM alpine
+COPY envreplace /
+
+USER 1001
+ENTRYPOINT ["envreplace"]
+CMD ["-h"]

@@ -64,71 +64,23 @@ dockers:
       - --label=org.opencontainers.image.created={{ time "2006-01-02T15:04:05Z07:00" }}
       - --label=org.opencontainers.image.revision={{ .FullCommit }}
       - --label=org.opencontainers.image.licenses=MIT
-  - image_templates:
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-mips"
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}-mips"
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}-mips"
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:latest-mips"
-    use: buildx
-    goos: linux
-    goarch: mips
-    skip_push: false
-    dockerfile: Dockerfile
-    build_flag_templates:
-      - "--platform=linux/mips"
-      - --label=org.opencontainers.image.title={{ .ProjectName }}
-      - --label=org.opencontainers.image.description={{ .ProjectName }}
-      - --label=org.opencontainers.image.url=https://github.com/fkmeland/{{ .ProjectName }}
-      - --label=org.opencontainers.image.source=https://github.com/fkmeland/{{ .ProjectName }}
-      - --label=org.opencontainers.image.Tag={{ .Tag }}
-      - --label=org.opencontainers.image.created={{ time "2006-01-02T15:04:05Z07:00" }}
-      - --label=org.opencontainers.image.revision={{ .FullCommit }}
-      - --label=org.opencontainers.image.licenses=MIT
-  - image_templates:
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-mips64"
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}-mips64"
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}-mips64"
-      - "ghcr.io/fkmeland/{{ .ProjectName }}:latest-mips64"
-    use: buildx
-    goos: linux
-    goarch: mips64
-    skip_push: false
-    dockerfile: Dockerfile
-    build_flag_templates:
-      - "--platform=linux/mips64"
-      - --label=org.opencontainers.image.title={{ .ProjectName }}
-      - --label=org.opencontainers.image.description={{ .ProjectName }}
-      - --label=org.opencontainers.image.url=https://github.com/fkmeland/{{ .ProjectName }}
-      - --label=org.opencontainers.image.source=https://github.com/fkmeland/{{ .ProjectName }}
-      - --label=org.opencontainers.image.Tag={{ .Tag }}
-      - --label=org.opencontainers.image.created={{ time "2006-01-02T15:04:05Z07:00" }}
-      - --label=org.opencontainers.image.revision={{ .FullCommit }}
-      - --label=org.opencontainers.image.licenses=MIT
 docker_manifests:
   - name_template: ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}
     image_templates:
       - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-amd64
       - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-arm64v8
-      - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-mips
-      - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-mips64
   - name_template: ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}
     image_templates:
       - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}-amd64
       - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}-arm64v8
-      - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}-mips
-      - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}-mips64
   - name_template: ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}
     image_templates:
       - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}-amd64
       - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}-arm64v8
-      - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}-mips
-      - ghcr.io/fkmeland/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}-mips64
   - name_template: ghcr.io/fkmeland/{{ .ProjectName }}:latest
     image_templates:
       - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-amd64
       - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-arm64v8
-      - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-mips
-      - ghcr.io/fkmeland/{{ .ProjectName }}:{{ .Tag }}-mips64
 checksum:
   name_template: "checksums.txt"
 snapshot:
